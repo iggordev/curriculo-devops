@@ -51,3 +51,4 @@ O site contém links de contato para email, telefone e LinkedIn.
 - O projeto é totalmente estático e funciona sem backend.
 - Para personalizar o conteúdo, edite o arquivo `index.html`.
 # curriculo-devops
+<img width="1900" height="846" alt="Captura de Tela 2026-05-17 às 11 01 12" src="https://github.com/user-attachments/assets/e7326bc6-b0b2-4dee-9a1d-f05897214e64" />
