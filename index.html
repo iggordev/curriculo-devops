@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Igor Vinicius | Cloud & DevOps</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu a {
+      color: #cbd5e1;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .menu a:hover {
+      color: #38bdf8;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,0.25), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(99,102,241,0.2), transparent 30%),
+        #0f172a;
+      padding-top: 120px;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .tag {
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      color: #38bdf8;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 20px;
+      color: #38bdf8;
+      font-size: 24px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .hero-card li {
+      color: #cbd5e1;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 12px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .about-card {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      padding: 40px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .about-card p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    .skill-card p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .timeline-item {
+      background: rgba(255,255,255,0.04);
+      padding: 35px;
+      border-radius: 24px;
+      border-left: 5px solid #38bdf8;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .timeline-item span {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .timeline-item p {
+      margin-top: 15px;
+      color: #cbd5e1;
+    }
+
+    /* CERTIFICATIONS */
+
+    .certifications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .cert-card {
+      background: linear-gradient(145deg, rgba(56,189,248,0.15), rgba(255,255,255,0.03));
+      padding: 35px;
+      border-radius: 24px;
+      border: 1px solid rgba(56,189,248,0.2);
+    }
+
+    .cert-card h3 {
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .cert-card p {
+      color: #cbd5e1;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      padding: 60px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contact-box h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 900px) {
+
+      .hero-content,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 44px;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .contact-box {
+        padding: 40px 25px;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Igor.dev</div>
+
+        <div class="menu">
+          <a href="#sobre">Sobre</a>
+          <a href="#skills">Skills</a>
+          <a href="#experiencia">Experiência</a>
+          <a href="#certificados">Certificados</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="hero-text">
+
+        <h1>
+          Iggor Vinicius <br>
+          <span>Cloud & DevOps</span>
+        </h1>
+
+        <p>
+          Profissional em transição para tecnologia com foco em Engenharia de Dados,
+          Cloud Computing e DevOps. Experiência com AWS, Docker, Git,
+          desenvolvimento back-end e análise de dados.
+        </p>
+
+        <div class="hero-tags">
+          <div class="tag">AWS</div>
+          <div class="tag">Docker</div>
+          <div class="tag">Python</div>
+          <div class="tag">DevOps</div>
+          <div class="tag">Cloud</div>
+          <div class="tag">Data</div>
+        </div>
+
+        <div class="buttons">
+          <a href="#contato" class="btn btn-primary">Entrar em contato</a>
+
+          <a href="https://www.linkedin.com/in/igor-vin%C3%ADcius-developer" target="_blank" class="btn btn-secondary">
+            LinkedIn
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-card">
+
+        <h3>Resumo Profissional</h3>
+
+        <ul>
+          <li>Administração de Empresas</li>
+          <li>Formação técnica em Design Gráfico</li>
+          <li>Estudante de ADS</li>
+          <li>Interesse em Cloud e DevOps</li>
+          <li>Experiência com Web Analytics</li>
+        </ul>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sobre">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Sobre Mim</h2>
+        <p>Minha jornada profissional e objetivos na tecnologia.</p>
+      </div>
+
+      <div class="about">
+
+        <div class="about-card">
+          <p>
+            Sou formado em Administração de Empresas, com formação técnica em Design Gráfico,
+            atualmente cursando Análise e Desenvolvimento de Sistemas.
+          </p>
+
+          <p>
+            Tenho direcionado meus estudos e projetos para Cloud Computing,
+            Engenharia de Dados, DevOps e automação de infraestrutura.
+          </p>
+    
+          <p>
+            Venho desenvolvendo habilidades práticas utilizando AWS,
+            Docker, Git, Python, Power BI e bancos de dados relacionais.
+          </p>
+
+          <p>
+            Meu objetivo é atuar em ambientes de tecnologia com foco em infraestrutura,
+            dados, pipelines e soluções escaláveis em nuvem.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Skills & Tecnologias</h2>
+        <p>Tecnologias e ferramentas utilizadas nos estudos e projetos.</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <h3>Cloud</h3>
+          <p>AWS, EC2, S3 e fundamentos de computação em nuvem.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>DevOps</h3>
+          <p>Docker, Git, versionamento e estruturação de ambientes.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Back-End</h3>
+          <p>Java, Spring Boot, Python e automações.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Dados</h3>
+          <p>Pandas, Power BI, Excel, Tableau e análise de dados.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Banco de Dados</h3>
+          <p>MySQL e fundamentos de modelagem de dados.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Design</h3>
+          <p>Experiência em identidade visual e comunicação digital.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="experiencia">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Experiência Profissional</h2>
+        <p>Experiências que contribuíram para minha evolução profissional.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Imagine e Desenhe — Designer Pleno</h3>
+          <span>Março 2022 — Atual</span>
+
+          <p>
+            Desenvolvimento de materiais de comunicação para marcas e projetos diversos,
+            garantindo consistência visual e identidade da marca em diferentes plataformas.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Grupo Pão de Açúcar (GPA) — Estágio em Web Analytics</h3>
+          <span>Fevereiro 2021 — Janeiro 2022</span>
+
+          <p>
+            Monitoramento e análise de dados de navegação em ambientes digitais,
+            acompanhamento de métricas de desempenho, conversão e engajamento.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="certificados">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Certificações</h2>
+        <p>Formações voltadas para cloud, dados e tecnologia.</p>
+      </div>
+
+      <div class="certifications">
+
+        <div class="cert-card">
+          <h3>AWS re/Start</h3>
+          <p>
+            Fundamentos de Computação em Nuvem pela Escola da Nuvem.
+            Formação focada em AWS, infraestrutura e cloud computing.
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <h3>Alura — Dados & IA</h3>
+          <p>
+            Formação em análise de dados, inteligência artificial e ferramentas
+            para tomada de decisão.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contato">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Vamos conversar?</h2>
+
+        <p>
+          Estou em busca de oportunidades nas áreas de Cloud,
+          DevOps, Dados e Tecnologia.
+        </p>
+
+        <div class="contact-links">
+
+          <a href="mailto:igorvinicius@myyahoo.com" class="btn btn-primary">
+            Email
+          </a>
+
+          <a href="tel:+5511977673005" class="btn btn-secondary">
+            Telefone
+          </a>
+
+          <a href="https://www.linkedin.com/in/igor-vin%C3%ADcius-developer" target="_blank" class="btn btn-secondary">
+            LinkedIn
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>
+        © 2026 Igor Vinicius Campos dos Santos — Cloud & DevOps Portfolio
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
